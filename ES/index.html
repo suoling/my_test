@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .title{
+      width: 400px;
+      height:70px	;
+      /*水平居中*/
+      margin: 0 auto;
+      padding-top: 30px;
+      text-align: center;
+      font-size: 24px;
+      color:#F00;
+    }
+    .btns{
+      width: 190px;
+      height: 30px;
+      margin: 0 auto;
+    }
+    .btns span{
+      display: block;
+      float:left;
+      width:80px;
+      height:27px;
+      line-height:27px;
+      background:#036;
+      border:1px solid #eee;
+      border-radius:7px;
+      margin-right:10px;
+      color:#FFF;
+      text-align:center;
+      font-size:14px;
+      font-family:"微软雅黑";
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="title" class="title">开始抽奖啦</div>
+	<div class="btns">
+		<span id="play">开始</span>
+		<span id="stop">结束</span>
+  </div>
+  <script>
+    var data=['Phone5','Ipad','笔记本','相机','打印机','谢谢参与','50元券'];
+    var timer=null;
+
+    var play=document.getElementById('play');
+    var stop=document.getElementById('stop');
+    play.onclick = playFun;
+    stop.onclick = stopFun;
+
+  
+    function playFun(){
+      var play=document.getElementById('play');
+      var title=document.getElementById('title');
+      clearInterval(timer);
+
+      timer=setInterval(function(){
+        var random=Math.floor(Math.random()*data.length);
+        title.innerHTML=data[random];
+      },50)
+      play.style.background='#eee';
+    }
+    function stopFun(){
+      var play=document.getElementById('play');
+      clearInterval(timer);
+      play.style.background='#036';
+    }
+
+  </script>
+</body>
+</html>
